@@ -44,7 +44,7 @@ and "[FailWhale][]."
 Because writing to a database is a slower operation than a read, many unified
 bots (a "bot-net") can bog down a server by sending spammy update requests.
 
-![Why We Can't Have Nice Things](https://media.giphy.com/media/7QOd9u8qQ4Hio/giphy.gif)
+<!-- ![Why We Can't Have Nice Things](https://media.giphy.com/media/7QOd9u8qQ4Hio/giphy.gif) -->
 
 While not impossible to beat, authentication tokens reduce the number of _anonymous_
 users of an API. If a given token-holder is determined to be a Bad Person, the service
