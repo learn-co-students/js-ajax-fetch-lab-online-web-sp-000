@@ -27,7 +27,9 @@
     "fetch-mock": "^5.0.0",
     "jsdom": "^9.4.1",
     "mocha": "^5.2.0",
-    "mocha-multi": "^1.0.1",
+    "mocha-jsdom": "~1.1.0",
+    "mocha-multi": "^0.9.1",
+    "sinon": "^1.17.7",
     "node-fetch": "^1.5.3"
   }
 }
