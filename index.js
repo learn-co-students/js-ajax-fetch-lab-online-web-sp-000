@@ -1,5 +1,5 @@
 const baseURL = 'https://api.github.com';
-const user = '<YOUR_USERNAME>';
+const user = 'nicoledag';
 
 function getToken() {
   //change to your token to run in browser, but set
@@ -28,23 +28,29 @@ function showResults(json) {
 
 function createIssue() {
   //use this function to create an issue based on the values input in index.html
-  const repo = `nicoledag/js-ajax-fetch-lab`;
   const postData = {
-    title: document.getElementById("title").value,
-    body: document.getElementById("body").value
-  };
-  fetch(`https://api.github.com/repos/${repo}/issues`,
-    {
-      method: 'POST',
-      body: JSON.stringify(postData),
-      headers: {
-        Authorization: `token ${getToken()}`
-      }
-    })
-    .then(res => res.json())
-    .then(json => getIssues(json));
+      title: document.getElementById('title').value,
+      body: document.getElementById('body').value
+    };
+
+      fetch(`${baseURL}/repos/${user}/js-ajax-fetch-lab/issues`, {
+       method: 'POST',
+       body: JSON.stringify(postData),
+       headers: {
+         Authorization: `token ${getToken()}`
+       }
+      })
+       .then(res => res.json())
+       .then(json => getIssues());
 }
 
 function getIssues() {
   //once an issue is submitted, fetch all open issues to see the issues you are creating
+  fetch(`${baseURL}/repos/${user}/js-ajax-fetch-lab/issues`, {
+       headers: {
+         Authorization: `token ${getToken()}`
+       }
+     })
+       .then(res => res.json())
+       .then(json => console.log(json));
 }
