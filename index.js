@@ -30,10 +30,10 @@ function showResults(json) {
 function createIssue() {
   //use this function to create an issue based on the values input in index.html
   const repo = `${user}/js-ajax-fetch-lab`;
-  // debugger
+  
   const issueText = document.querySelector('input#body').value;
   const issueTitle = document.querySelector('input#title').value;
-console.log(issueText, issueTitle)
+
   const data = {title: issueTitle, body: issueText}
 
   fetch(`${baseURL}/repos/${repo}/issues`, {
@@ -58,7 +58,6 @@ function getIssues() {
 }
 
 function showIssues(jsonArray) {
-  // debusger
   jsonArray.forEach(function(json) {
     document.querySelector('div#issues').append(json.title)
     document.querySelector('div#issues').append(json.body)
