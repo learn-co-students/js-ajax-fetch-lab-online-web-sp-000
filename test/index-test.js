@@ -71,7 +71,6 @@ describe('index', () => {
       nock( 'https://api.github.com' )
         .post( `/repos/${user}/js-ajax-fetch-lab/issues` )
         .reply( 201, function ( uri, requestBody ) {
-          // console.log(this.req)
           reqBody = requestBody
           headers = this.req.headers
           return {
@@ -92,6 +91,7 @@ describe('index', () => {
       expect(headers[ 'authorization' ], 'Authorization header not found').to.exist
       expect( headers[ 'authorization' ][ 0 ], 'Authorization header expected to point to "token " without the actual token' )
         .to.eq( 'token ' )
+
       expect(reqBody).to.match(/test body/);
     });
 
