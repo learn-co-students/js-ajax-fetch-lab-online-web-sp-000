@@ -1,10 +1,9 @@
 const baseURL = 'https://api.github.com';
 const user = 'mackenzie-km';
-const token =''
 
 fetch('https://api.github.com/user/repos', {
   headers: {
-    Authorization: `token ${token}`
+    Authorization: `token ${getToken()}`
   }
 })
   .then(res => res.json())
@@ -22,7 +21,7 @@ function forkRepo() {
   fetch(uri, {
     method: 'POST',
     headers: {
-       Authorization: `token ${token}`
+       Authorization: `token ${getToken()}`
      }
   }).then(res => res.json())
   .then(res => showResults(res));
@@ -37,23 +36,21 @@ function showResults(json) {
 
 function createIssue() {
   //use this function to create an issue based on the values input in index.html
-  const title = $("input#title").val();
-  const body = $("#body").val();
-  const repo = 'mackenzie-km/js-ajax-fetch-lab';
-  const postData = {
-    title: `${title}`,
-    body: `${body}`
-  };
+  const repo = `${user}/js-ajax-fetch-lab`;
   const uri = baseURL + '/repos/' + repo + '/issues'
+  const postData = {
+    title: document.getElementById('title').value,
+    body: document.getElementById('body').value};
 
-    fetch(uri, {
-        method: 'POST',
-        body: JSON.stringify(postData),
-        headers: {
-          Authorization: `token ${token}`
-          }
+  fetch(uri, {
+      method: 'POST',
+      body: JSON.stringify(postData),
+      headers: {
+        Authorization: `token ${getToken()}`
         }
-    ).then(res => getIssues(res));
+      }
+  ).then(res => res.json())
+  .then(json => getIssues());
 }
 
 function getIssues() {
@@ -62,7 +59,7 @@ function getIssues() {
   const uri = baseURL + '/repos/' + repo + '/issues'
   fetch(uri, {
       headers: {
-        Authorization: `token ${token}`
+        Authorization: `token ${getToken()}`
         }
       }
     ).then(res => res.json())
