@@ -4,7 +4,7 @@ const user = 'alankrajina';
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return "84d82e6ca044d304c178819fff83cababf896cec";
+  return "";
 }
 
 
@@ -17,7 +17,7 @@ function forkRepo() {
   fetch(url,{
     method: 'POST',
     headers: {
-    Authorization: "84d82e6ca044d304c178819fff83cababf896cec"
+    Authorization: `token ${getToken()}`
     }
   })
     .then(response => response.json())
