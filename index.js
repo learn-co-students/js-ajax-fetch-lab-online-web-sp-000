@@ -3,8 +3,8 @@ const user = 'ogonzaleznyc';
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  //return '';
-  return '199842c73f000be82d48c600fd88023604cdf672';
+  return '';
+  
   //return '';
 }
 
